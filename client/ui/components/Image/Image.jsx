@@ -1,17 +1,14 @@
 import { ImageList } from "./ImageList";
 import "./Image.scss";
 
-export function Image({ src, onClick }) {
-    const imageStyle = onClick ? "image clicked" : "image";
-
+export function Image({ src }) {
     const onImageNotFound = (e) => {
         e.currentTarget.src = ImageList.Noimage;
     }
 
     return (
         <img
-            className={imageStyle}
-            onClick={onClick}
+            className={"image"}
             src={src}
             onError={onImageNotFound}
         />

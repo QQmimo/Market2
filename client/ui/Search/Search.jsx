@@ -5,9 +5,13 @@ export function Search({ onSearch }) {
         }
     }
 
+    const onBlur = (e) => {
+        onSearch?.(e.currentTarget.value);
+    }
+
     return (
         <div>
-            <input placeholder="Поиск" onKeyDown={onKeyDown} type="text" />
+            <input placeholder="Поиск" onKeyDown={onKeyDown} onBlur={onBlur} type="text" />
         </div>
     );
 }

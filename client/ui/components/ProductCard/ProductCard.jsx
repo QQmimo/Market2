@@ -1,6 +1,5 @@
 import { CartController } from "../../../controllers/CartController";
 import { Image } from "../Image/Image";
-import { ImageList } from "../Image/ImageList";
 import "./ProductCard.scss";
 
 export function ProductCard({ id, name, category, description, price, images, onAdd }) {

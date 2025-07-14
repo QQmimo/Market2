@@ -25,13 +25,14 @@ export class Api {
         });
     }
 
-    static async delete(url) {
+    static async delete(url, body) {
         return fetch(url, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
                 'accept': 'applicationjson'
-            }
+            },
+            body: JSON.stringify(body)
         });
     }
 }

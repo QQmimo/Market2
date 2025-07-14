@@ -7,19 +7,28 @@ import './App.css';
 function App() {
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [search, setSearch] = useState("");
-  const [content, setContent] = useState(<MainPage onUpdate={setLastUpdate} />);
+  const [content, setContent] = useState(null);
 
-  useEffect(() => {
-    setContent(<MainPage onUpdate={setLastUpdate} search={search} />);
-  }, [search]);
-
-  useEffect(() => {
+  const getContent = () => {
     if (location.pathname === '/') {
       setContent(<MainPage onUpdate={setLastUpdate} search={search} />);
     }
     if (location.pathname === '/cart') {
       setContent(<CartPage />);
     }
+  }
+
+  useEffect(() => {
+    if (search.length > 0) {
+      setContent(<MainPage onUpdate={setLastUpdate} search={search} />);
+    }
+    else {
+      getContent();
+    }
+  }, [search]);
+
+  useEffect(() => {
+    getContent();
   }, []);
 
   return (
