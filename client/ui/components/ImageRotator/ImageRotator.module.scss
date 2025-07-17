@@ -1,0 +1,8 @@
+.images {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    overflow-x: hidden;
+    transition: left 2s;
+}

@@ -1,5 +1,6 @@
 import { CartController } from "../../../controllers/CartController";
 import { Image } from "../Image/Image";
+import { ImageRotator } from "../ImageRotator/ImageRotator";
 import "./ProductCard.scss";
 
 export function ProductCard({ id, name, category, description, price, images, onAdd }) {
@@ -14,7 +15,8 @@ export function ProductCard({ id, name, category, description, price, images, on
     return (
         <div className="card">
             <div className="image-controller">
-                <Image className="image" src={mainImage.imageUrl} />
+                {/* <Image className="image" src={mainImage.imageUrl} /> */}
+                <ImageRotator images={images} />
             </div>
             <div>{name}</div>
             <div>{description}</div>
