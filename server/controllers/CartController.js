@@ -3,23 +3,23 @@ class CartController {
         this._products = [];
     }
 
-    getAllProducts() {
-        return this._products;
+    getAllProducts({ uid }) {
+        return this._products.filter(p => p.client_uid === uid);
     }
 
-    addProduct(product) {
-        const found = this._products.find(p => p.id === product.id);
+    addProduct({ id, uid }) {
+        const found = this._products.find(p => p.client_uid === uid && p.id === id);
 
         if (found) {
             found.count++;
         }
         else {
-            this._products.push({ ...product, count: 1 });
+            this._products.push({ id: id, count: 1, client_uid: uid });
         }
     }
 
-    deleteProduct(id) {
-        this._products = this._products.filter(p => p.id !== id);
+    deleteProduct({ id, uid }) {
+        this._products = this._products.filter(p => p.client_uid === uid && p.id !== id);
     }
 }
 

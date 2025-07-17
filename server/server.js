@@ -83,22 +83,25 @@ server.get("/api/categories:id", (req, res) => {
     }
 });
 
-server.get("/api/cart", (req, res) => {
+
+server.get("/api/cart:uid", (req, res) => {
     try {
-        res.json(cartController.getAllProducts()).status(200);
+        const uid = req.params.uid.replace(/[()]/g, '');
+        res.json(cartController.getAllProducts({ uid: uid })).status(200);
     }
     catch (er) {
         res.status(500).json({ error: er.message });
     }
 });
 
-server.post("/api/cart", (req, res) => {
+server.post("/api/cart:uid", (req, res) => {
     try {
+        const uid = req.params.uid.replace(/[()]/g, '');
         if (!req.body.id) {
             res.status(400).json({ error: `Тело запроса должно содержать поле 'id', которое ссылается на продукт` });
             return;
         }
-        cartController.addProduct(req.body);
+        cartController.addProduct({ ...req.body, uid: uid });
         return res.sendStatus(200);
     }
     catch (er) {
@@ -106,15 +109,15 @@ server.post("/api/cart", (req, res) => {
     }
 });
 
-server.delete("/api/cart:id", (req, res) => {
+server.delete("/api/cart:uid", (req, res) => {
     try {
-        const id = Number(req.params.id.replace(/[()]/g, ''));
-        if (isNaN(id)) {
-            res.status(400).json({ error: `Значение 'id' указанное в запросе не является числом` });
+        const uid = req.params.uid.replace(/[()]/g, '');
+        if (!req.body.id) {
+            res.status(400).json({ error: `Тело запроса должно содержать поле 'id', которое ссылается на продукт` });
             return;
         }
 
-        cartController.deleteProduct(id);
+        cartController.deleteProduct({ id: req.body.id, uid: uid });
         return res.sendStatus(200);
     }
     catch (er) {
