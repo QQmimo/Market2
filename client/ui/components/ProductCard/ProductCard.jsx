@@ -1,11 +1,8 @@
 import { CartController } from "../../../controllers/CartController";
-import { Image } from "../Image/Image";
 import { ImageRotator } from "../ImageRotator/ImageRotator";
-import "./ProductCard.scss";
+import styles from "./ProductCard.module.scss";
 
 export function ProductCard({ id, name, category, description, price, images, onAdd }) {
-    const mainImage = images.find(image => image.main) ?? images[0];
-
     const onBuy = () => {
         CartController.addToCart(id).then(() => {
             onAdd?.(new Date());
@@ -13,9 +10,8 @@ export function ProductCard({ id, name, category, description, price, images, on
     }
 
     return (
-        <div className="card">
-            <div className="image-controller">
-                {/* <Image className="image" src={mainImage.imageUrl} /> */}
+        <div className={styles.card}>
+            <div className={styles["image-controller"]}>
                 <ImageRotator images={images} />
             </div>
             <div>{name}</div>

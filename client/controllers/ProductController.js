@@ -9,6 +9,10 @@ export class ProductController {
         return ProductRepository.getProduct(id);
     }
 
+    static async getProductByCategory(categoryId) {
+        return ProductRepository.getProductByCategory(categoryId);
+    }
+
     static async searchProducts(search) {
         return ProductRepository.searchProduct(search);
     }

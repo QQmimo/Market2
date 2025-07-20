@@ -1,0 +1,17 @@
+.counter {
+    border: 1px solid gray;
+    border-radius: 4px;
+    overflow: hidden;
+
+    & > * {
+        border: none;
+    }
+
+    .minus {
+        border-right: 1px solid gray;
+    }
+
+    .plus {
+        border-left: 1px solid gray;
+    }
+}

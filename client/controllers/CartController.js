@@ -2,19 +2,23 @@ import { CartRepository } from "../repositories/CartRepository";
 
 export class CartController {
     static async getProductsCount() {
-        const products = await CartRepository.getCart();
-        return products.reduce((a, b) => a + b.count, 0);
+        const cart = await CartRepository.getCart();
+        return (cart?.products ?? []).reduce((a, b) => a + b.count, 0);
     }
 
     static async getProducts() {
-        return CartRepository.getCart();
+        return (await CartRepository.getCart())?.products ?? [];
     }
 
     static async addToCart(productId) {
-        CartRepository.addToCart(productId);
+        return CartRepository.addToCart(productId);
+    }
+
+    static async changeCount(productId, count) {
+        return CartRepository.changeCount(productId, count);
     }
 
     static async deleteFromCart(productId) {
-        CartRepository.deleteFromCart(productId);
+        return CartRepository.deleteFromCart(productId);
     }
 }

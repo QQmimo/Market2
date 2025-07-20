@@ -25,6 +25,23 @@ export class Api {
         });
     }
 
+    static async patch(url, body) {
+        const response = await fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                'accept': 'applicationjson'
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (!response.ok) {
+            throw new Error((await response.json()).error);
+        }
+
+        return response.json();
+    }
+
     static async delete(url, body) {
         return fetch(url, {
             method: 'DELETE',

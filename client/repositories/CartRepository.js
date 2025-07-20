@@ -11,6 +11,10 @@ export class CartRepository {
     }
 
     static deleteFromCart(productId) {
-        return Api.delete(`/api/cart(${Client.getOrAddUID()}))`, { id: productId })
+        return Api.delete(`/api/cart(${Client.getOrAddUID()})`, { id: productId });
+    }
+
+    static changeCount(productId, count) {
+        return Api.patch(`/api/cart(${Client.getOrAddUID()})`, { id: productId, count: count });
     }
 }

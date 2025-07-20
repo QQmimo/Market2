@@ -1,14 +1,14 @@
 import { Image } from "../components/Image/Image";
 import { ImageList } from "../components/Image/ImageList";
-import "./Logo.scss";
+import styles from "./Logo.module.scss";
 
-export function Logo({ title, onClick = () => {} }) {
+export function Logo({ title, onClick = () => { } }) {
     return (
-        <div className="logo" onClick={onClick}>
-            <div className="rotate">
-                <Image className="iamge" src={ImageList.Logo} />
+        <div className={styles.logo} onClick={onClick}>
+            <div className={styles.rotate}>
+                <Image src={ImageList.Logo} />
             </div>
-            <div className="title">
+            <div className={styles.title}>
                 {title}
             </div>
         </div>

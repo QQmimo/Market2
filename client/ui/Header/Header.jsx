@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Cart } from "../Cart/Cart";
 import { Logo } from "../Logo/Logo";
 import { Search } from "../Search/Search";
-import "./Header.scss";
+import { CategoryController } from "../../controllers/CategoryController";
+import { Selector } from "../components/Selector/Selector";
+import styles from "./Header.module.scss";
 
-export function Header({ lastUpdate, onSearch }) {
+export function Header({ lastUpdate, onSearch, onCategorySelect, onOrderSelect }) {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        CategoryController.getAllCategories().then(all => {
+            setCategories([{ id: -1, title: 'Все категории' }, ...all.map(c => ({ id: c.id, title: c.name }))]);
+        });
+    }, []);
+
     const goToCart = () => {
         location.href = '/cart';
     }
@@ -14,12 +24,14 @@ export function Header({ lastUpdate, onSearch }) {
     }
 
     return (
-        <div className="header">
+        <div className={styles.header}>
             <Logo title={'Market'} onClick={goToHome} />
-            <div className="right">
+            <div className={styles.right}>
                 <Search onSearch={onSearch} />
+                <Selector options={categories} value={-1} onChange={onCategorySelect} />
+                <Selector options={[{ id: 0, title: 'Сначало дорогое' }, { id: 1, title: 'Сначало дешевое' }]} value={0} onChange={onOrderSelect} />
                 <Cart onClick={goToCart} lastUpdate={lastUpdate} />
             </div>
-        </div>
+        </div >
     )
 }

@@ -1,31 +1,32 @@
 import { useEffect, useState } from "react";
-import "./CountBubble.scss";
+import styles from "./CountBubble.module.scss";
 
 export function CountBubble({ number = 0 }) {
-    const [bubbleStyle, setBubbleStyle] = useState('bubble hidden');
+    const [bubbleStyle, setBubbleStyle] = useState([styles.bubble, styles.hidden].join(' '));
     const [count, setCount] = useState(number);
 
     useEffect(() => {
+        setBubbleStyle([styles.bubble, styles.hidden].join(' '));
         if (count === 0) {
             if (number > 0) {
-                setBubbleStyle(`bubble show`);
+                setBubbleStyle([styles.bubble, styles.show].join(' '));
             }
         }
         if (count !== number && count > 0) {
             if (number === 0) {
-                setBubbleStyle(`bubble hide`);
+                setBubbleStyle([styles.bubble, styles.hide].join(' '));
             }
             if (number > 0) {
-                setBubbleStyle(`bubble morf`);
+                setBubbleStyle([styles.bubble, styles.morf].join(' '));
             }
         }
 
         setTimeout(() => {
             if (number > 0) {
-                setBubbleStyle(`bubble`);
+                setBubbleStyle(styles.bubble);
             }
             else {
-                setBubbleStyle('bubble hidden');
+                setBubbleStyle([styles.bubble, styles.hidden].join(' '));
             }
         }, 700);
 

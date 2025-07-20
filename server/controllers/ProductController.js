@@ -13,6 +13,10 @@ class ProductController {
         return this._allProducts.find(product => product.id === id);
     }
 
+    searchByCategory(categoryId) {
+        return this._allProducts.filter(product => product.category.id == categoryId);
+    }
+
     searchProduct(searchName) {
         return this._allProducts.filter(product => product.name.toLowerCase().indexOf(searchName.toLowerCase()) !== -1);
     }

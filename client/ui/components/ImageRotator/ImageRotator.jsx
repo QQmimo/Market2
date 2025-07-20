@@ -13,7 +13,6 @@ export function ImageRotator({ images = [], sliderDelay = 5000 }) {
     };
 
     const [indexes, setIndexes] = useState({ current: getInitIndex(), next: getNextIndex() });
-    
 
     useEffect(() => {
         setTimeout(() => {
@@ -23,8 +22,10 @@ export function ImageRotator({ images = [], sliderDelay = 5000 }) {
 
     return (
         <div className={styles.images}>
-            <Image src={images[indexes.current]?.imageUrl} />
-            <Image src={images[indexes.next]?.imageUrl} />
+            <div className={styles.roller}>
+                <Image src={images[indexes.current]?.imageUrl} />,
+                <Image src={images[indexes.next]?.imageUrl} />
+            </div>
         </div>
     );
 }

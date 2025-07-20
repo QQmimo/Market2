@@ -9,6 +9,10 @@ export class ProductRepository {
         return Api.get(`/api/products(${id})`)
     }
 
+    static getProductByCategory(categoryId) {
+        return Api.get(`/api/products?category=(${categoryId})`);
+    }
+
     static searchProduct(search) {
         return Api.get(`/api/products?search=${search}`);
     }
