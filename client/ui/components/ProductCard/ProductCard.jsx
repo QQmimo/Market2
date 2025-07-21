@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { CartController } from "../../../controllers/CartController";
 import { ImageRotator } from "../ImageRotator/ImageRotator";
 import styles from "./ProductCard.module.scss";
 
 export function ProductCard({ id, name, category, description, price, images, onAdd }) {
+    const [cart, setCart] = useState(null);
+
     const onBuy = () => {
         CartController.addToCart(id).then(() => {
             onAdd?.(new Date());

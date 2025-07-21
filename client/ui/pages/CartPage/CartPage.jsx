@@ -48,7 +48,7 @@ export function CartPage({ onUpdate }) {
 
     if (allProducts.length === 0) {
         return (
-            <div>В корзине нет товаров</div>
+            <div className={styles.page}>В корзине нет товаров</div>
         );
     }
 

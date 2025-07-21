@@ -3,6 +3,7 @@ import { Header } from './ui/Header/Header';
 import { MainPage } from './ui/pages/MainPage/MainPage';
 import { CartPage } from './ui/pages/CartPage/CartPage';
 import './App.css';
+import { Footer } from './ui/Footer/Footer';
 
 function App() {
   const [lastUpdate, setLastUpdate] = useState(null);
@@ -38,6 +39,7 @@ function App() {
     <>
       <Header lastUpdate={lastUpdate} onSearch={setSearch} onCategorySelect={setCategory} onOrderSelect={setOrder} />
       {content}
+      <Footer />
     </>
   )
 }

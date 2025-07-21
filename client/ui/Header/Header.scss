@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 75px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .22), 0 4.8px 14.4px 0 rgba(0, 0, 0, .18);
+    border-bottom: 1px solid gray;
+    justify-content: space-between;
+    padding: 0 50px;
+    box-sizing: border-box;
+    align-items: center;
+
+    .right {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        align-items: center;
+    }
+}
