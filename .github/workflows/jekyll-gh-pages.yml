@@ -34,8 +34,6 @@ jobs:
       - run: npm run build
       - run: cd ./server && npm i
       - run: npx pm2 start ./server/server.js
-      - run: cd ..
-      - run: cd ./dist
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
@@ -43,7 +41,7 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
+          source: ./dist
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
