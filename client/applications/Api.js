@@ -11,7 +11,9 @@ export class Api {
             throw new Error((await response.json()).error);
         }
 
-        return response.json();
+        const result = await response.json();
+
+        return result;
     };
 
     static async post(url, body) {

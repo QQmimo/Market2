@@ -31,17 +31,17 @@ server.get("/api", (req, res) => {
 server.get("/api/products", (req, res) => {
     try {
         if (req.query.search) {
-            res.json(productController.searchProduct(req.query.search)).status(200);
+            return res.status(200).json(productController.searchProduct(req.query.search));
         }
-        else if(req.query.category) {
-            res.json(productController.searchByCategory(req.query.category)).status(200);
+        else if (req.query.category) {
+            return res.status(200).json(productController.searchByCategory(req.query.category));
         }
         else {
-            res.json(productController.getAllProducts());
+            return res.status(200).json(productController.getAllProducts());
         }
     }
     catch (er) {
-        res.status(500).json({ error: er.message });
+        return res.status(500).json({ error: er.message });
     }
 });
 
@@ -49,24 +49,23 @@ server.get("/api/products:id", (req, res) => {
     try {
         const id = Number(req.params.id.replace(/[()]/g, ''));
         if (isNaN(id)) {
-            res.status(400).json({ error: `Значение 'id' указанное в запросе не является числом` });
-            return;
+            return res.status(400).json({ error: `Значение 'id' указанное в запросе не является числом` });
         }
 
         res.json(productController.getProduct(id)).status(200);
     }
     catch (er) {
-        res.status(500).json({ error: er.message });
+        return res.status(500).json({ error: er.message });
     }
 });
 
 
 server.get("/api/categories", (req, res) => {
     try {
-        res.json(categoryController.getAllCategories()).status(200);
+        return res.json(categoryController.getAllCategories()).status(200);
     }
     catch (er) {
-        res.status(500).json({ error: er.message });
+        return res.status(500).json({ error: er.message });
     }
 });
 
@@ -74,14 +73,13 @@ server.get("/api/categories:id", (req, res) => {
     try {
         const id = Number(req.params.id.replace(/[()]/g, ''));
         if (isNaN(id)) {
-            res.status(400).json({ error: `Значение 'id' указанное в запросе не является числом` });
-            return;
+            return res.status(400).json({ error: `Значение 'id' указанное в запросе не является числом` });
         }
 
-        res.json(categoryController.getCategory(id)).status(200);
+        return res.json(categoryController.getCategory(id)).status(200);
     }
     catch (er) {
-        res.status(500).json({ error: er.message });
+        return res.status(500).json({ error: er.message });
     }
 });
 
@@ -89,10 +87,10 @@ server.get("/api/categories:id", (req, res) => {
 server.get("/api/cart:uid", async (req, res) => {
     try {
         const uid = req.params.uid.replace(/[()]/g, '');
-        res.json(await cartController.getCart({ uid: uid })).status(200);
+        return res.json(await cartController.getCart({ uid: uid })).status(200);
     }
     catch (er) {
-        res.status(500).json({ error: er.message });
+        return res.status(500).json({ error: er.message });
     }
 });
 
@@ -100,14 +98,13 @@ server.post("/api/cart:uid", async (req, res) => {
     try {
         const uid = req.params.uid.replace(/[()]/g, '');
         if (!req.body.id) {
-            res.status(400).json({ error: `Тело запроса должно содержать поле 'id', которое ссылается на продукт` });
-            return;
+            return res.status(400).json({ error: `Тело запроса должно содержать поле 'id', которое ссылается на продукт` });
         }
         await cartController.addProduct({ ...req.body, uid: uid });
         return res.sendStatus(200);
     }
     catch (er) {
-        res.status(500).json({ error: er.message });
+        return res.status(500).json({ error: er.message });
     }
 });
 
@@ -115,18 +112,16 @@ server.patch("/api/cart:uid", async (req, res) => {
     try {
         const uid = req.params.uid.replace(/[()]/g, '');
         if (!req.body.id) {
-            res.status(400).json({ error: `Тело запроса должно содержать поле 'id', которое ссылается на продукт` });
-            return;
+            return res.status(400).json({ error: `Тело запроса должно содержать поле 'id', которое ссылается на продукт` });
         }
         if (!req.body.count) {
-            res.status(400).json({ error: `Тело запроса должно содержать поле 'count', которое содержит количество продукта в корзине` });
-            return;
+            return res.status(400).json({ error: `Тело запроса должно содержать поле 'count', которое содержит количество продукта в корзине` });
         }
-        const response = await cartController.changeProduct({ ...req.body, uid: uid  });
+        const response = await cartController.changeProduct({ ...req.body, uid: uid });
         return res.json(response);
     }
-    catch(er) {
-        res.status(500).json({ error: er.message });
+    catch (er) {
+        return res.status(500).json({ error: er.message });
     }
 });
 
@@ -134,15 +129,14 @@ server.delete("/api/cart:uid", async (req, res) => {
     try {
         const uid = req.params.uid.replace(/[()]/g, '');
         if (!req.body.id) {
-            res.status(400).json({ error: `Тело запроса должно содержать поле 'id', которое ссылается на продукт` });
-            return;
+            return res.status(400).json({ error: `Тело запроса должно содержать поле 'id', которое ссылается на продукт` });
         }
 
         await cartController.deleteProduct({ id: req.body.id, uid: uid });
         return res.sendStatus(200);
     }
     catch (er) {
-        res.status(500).json({ error: er.message });
+        return res.status(500).json({ error: er.message });
     }
 });
 

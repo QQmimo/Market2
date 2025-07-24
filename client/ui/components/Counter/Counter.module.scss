@@ -3,7 +3,7 @@
     border-radius: 4px;
     overflow: hidden;
     white-space: nowrap;
-    display: inline-block;
+    display: flex;
 
     &>* {
         border: none;
@@ -12,10 +12,14 @@
     .minus {
         border-right: 1px solid gray;
         cursor: pointer;
+        height: 20px;
+        width: 20px;
     }
 
     .plus {
         border-left: 1px solid gray;
         cursor: pointer;
+        height: 20px;
+        width: 20px;
     }
 }

@@ -3,11 +3,13 @@ import { CartRepository } from "../repositories/CartRepository";
 export class CartController {
     static async getProductsCount() {
         const cart = await CartRepository.getCart();
-        return (cart?.products ?? []).reduce((a, b) => a + b.count, 0);
+        const count = (cart ?? []).reduce((a, b) => a + b.count, 0);
+        return count;
     }
 
     static async getProducts() {
-        return (await CartRepository.getCart())?.products ?? [];
+        const products = await CartRepository.getCart();
+        return products;
     }
 
     static async addToCart(productId) {

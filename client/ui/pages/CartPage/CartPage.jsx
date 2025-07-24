@@ -3,6 +3,7 @@ import { ProductController } from "../../../controllers/ProductController";
 import { CartController } from "../../../controllers/CartController";
 import { Counter } from "../../components/Counter/Counter";
 import styles from "./CartPage.module.scss";
+import { Button } from "../../components/Button/Button";
 
 export function CartPage({ onUpdate }) {
     const [allProducts, setAllProducts] = useState([]);
@@ -75,7 +76,7 @@ export function CartPage({ onUpdate }) {
                                 </td>
                                 <td>$ {product.price}</td>
                                 <td>
-                                    <button onClick={() => onChange(product.id, 0)}>Удалить</button>
+                                    <Button title={"Удалить"} onClick={() => onChange(product.id, 0)} />
                                 </td>
                             </tr>
                         ))

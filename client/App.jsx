@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { Header } from './ui/Header/Header';
 import { MainPage } from './ui/pages/MainPage/MainPage';
 import { CartPage } from './ui/pages/CartPage/CartPage';
-import './App.css';
 import { Footer } from './ui/Footer/Footer';
+import './App.css';
 
 function App() {
   const [lastUpdate, setLastUpdate] = useState(null);

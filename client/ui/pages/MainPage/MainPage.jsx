@@ -9,25 +9,25 @@ export function MainPage({ search = "", category = -1, order = 0, onUpdate }) {
     const [date, setDate] = useState(new Date());
 
     useEffect(() => {
-        ProductController.searchProducts(search).then(products => {
+        ProductController.searchProducts(search).then(foundedProducts => {
             if (order === 0) {
-                products = products.sort((a, b) => b.price - a.price);
+                foundedProducts = foundedProducts.sort((a, b) => b.price - a.price);
             }
             else {
-                products = products.sort((a, b) => a.price - b.price);
+                foundedProducts = foundedProducts.sort((a, b) => a.price - b.price);
             }
-            products = products.filter(p => category === -1 || p.category.id === category)
+            foundedProducts = foundedProducts.filter(p => category === -1 || p.category.id === category)
 
             CartController.getProducts().then(productsInCart => {
-                products = products.map(product => {
-                    const foundInCart = productsInCart.find(x => x.id === product.id);
+                foundedProducts = foundedProducts.map(foundedProduct => {
+                    const foundInCart = productsInCart.find(x => x.id === foundedProduct.id);
                     if (foundInCart) {
-                        product.count = foundInCart.count;
+                        foundedProduct.count = Number(foundInCart.count);
                     }
-                    return product;
+                    return foundedProduct;
                 });
 
-                setProducts(products);
+                setProducts(foundedProducts);
             });
         });
     }, [search, order, category, date]);
