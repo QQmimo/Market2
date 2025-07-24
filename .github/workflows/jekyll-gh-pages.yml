@@ -32,8 +32,7 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run build
-      - run: cd ./server
-      - run: npm install
+      - run: cd ./server && npm i
       - run: node ./server/server.js
       - name: Checkout
         uses: actions/checkout@v4
