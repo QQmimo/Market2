@@ -35,7 +35,7 @@ jobs:
       - run: cd ./server && npm i
       - run: npx pm2 start ./server/server.js
       - run: cd ..
-      - run: ls -la
+      - run: cd ./dist
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
