@@ -32,7 +32,7 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run build
-      - run: cd /server
+      - run: cd ./server
       - run: npm install
       - run: node server.js
       - name: Checkout
