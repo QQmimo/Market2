@@ -31,7 +31,7 @@ export function CartPage({ onUpdate }) {
     }, [allProducts]);
 
     const onChange = (id, count) => {
-        if (count === 0) {
+        if (count == 0) {
             CartController.deleteFromCart(id).then(() => {
                 update();
                 onUpdate?.(new Date());
@@ -52,7 +52,7 @@ export function CartPage({ onUpdate }) {
         );
     }
 
-    return (       
+    return (
         <div className={styles.page}>
             <table className={styles.table} border={1}>
                 <thead>
@@ -61,6 +61,7 @@ export function CartPage({ onUpdate }) {
                         <th>Товар</th>
                         <th>Количество</th>
                         <th>Цена, $ (1шт.)</th>
+                        <th>Удалить?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,13 +74,16 @@ export function CartPage({ onUpdate }) {
                                     <Counter value={product.count} min={0} onChange={(count) => onChange(product.id, count)} />
                                 </td>
                                 <td>$ {product.price}</td>
+                                <td>
+                                    <button onClick={() => onChange(product.id, 0)}>Удалить</button>
+                                </td>
                             </tr>
                         ))
                     }
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colSpan={3} className={styles.total}>ИТОГО К ОПЛАТЕ:</td>
+                        <td colSpan={4} className={styles.total}>ИТОГО К ОПЛАТЕ:</td>
                         <td>$ {total}</td>
                     </tr>
                 </tfoot>

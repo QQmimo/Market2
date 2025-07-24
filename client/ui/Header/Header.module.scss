@@ -20,5 +20,47 @@
         flex-direction: row;
         gap: 50px;
         align-items: center;
+
+        .search {
+            display: flex;
+        }
+
+        .category {
+            display: flex;
+        }
+
+        .order {
+            display: flex;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .header {
+        .right {
+            .search {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .header {
+        .right {
+            .category {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header {
+        .right {
+            .order {
+                display: none;
+            }
+        }
     }
 }

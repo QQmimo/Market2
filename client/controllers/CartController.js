@@ -15,6 +15,9 @@ export class CartController {
     }
 
     static async changeCount(productId, count) {
+        if (Number(count) <= 0) {
+            return this.deleteFromCart(productId);
+        }
         return CartRepository.changeCount(productId, count);
     }
 

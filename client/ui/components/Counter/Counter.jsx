@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./Counter.module.scss";
 
-export function Counter({ value = 1, min = 1, max = 100, step = 1, onChange }) {
+export function Counter({ value = 1, min = 0, max = 100, step = 1, onChange }) {
     const [count, setCount] = useState(value);
     const refInput = useRef(null);
 
     const changeValue = (add) => {
         setCount(prevState => {
-            const value = Number(prevState) + add;
-            refInput.current.value = value;
-            if (value >= min && value <= max) {
-                onChange?.(value);
-                return value;
+            const num = Number(prevState) + add;
+            refInput.current.value = num;
+            if (num >= min && num <= max) {
+                onChange?.(num);
+                return num;
             }
             return prevState;
         });

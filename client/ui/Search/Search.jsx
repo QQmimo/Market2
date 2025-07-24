@@ -1,4 +1,4 @@
-export function Search({ onSearch }) {
+export function Search({ className, onSearch }) {
     const onKeyDown = (e) => {
         if (e.key === "Enter" || e.key === "NumpadEnter") {
             onSearch?.(e.currentTarget.value);
@@ -10,7 +10,7 @@ export function Search({ onSearch }) {
     }
 
     return (
-        <div>
+        <div className={className}>
             <input placeholder="Поиск" onKeyDown={onKeyDown} onBlur={onBlur} type="text" />
         </div>
     );

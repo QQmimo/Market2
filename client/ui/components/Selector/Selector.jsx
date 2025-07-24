@@ -1,10 +1,10 @@
-export function Selector({ options, value, onChange }) {
+export function Selector({ className, options, value, onChange }) {
     const onSelect = (e) => {
         onChange?.(Number(e.currentTarget.value));
     }
 
     return (
-        <select onChange={onSelect} defaultValue={value}>
+        <select className={className} onChange={onSelect} defaultValue={value}>
             {options.map(option => <option key={option.id} value={option.id}>{option.title}</option>)}
         </select>
     );

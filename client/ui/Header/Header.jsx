@@ -27,9 +27,9 @@ export function Header({ lastUpdate, onSearch, onCategorySelect, onOrderSelect }
         <div className={styles.header}>
             <Logo title={'Market'} onClick={goToHome} />
             <div className={styles.right}>
-                <Search onSearch={onSearch} />
-                <Selector options={categories} value={-1} onChange={onCategorySelect} />
-                <Selector options={[{ id: 0, title: 'Сначало дорогое' }, { id: 1, title: 'Сначало дешевое' }]} value={0} onChange={onOrderSelect} />
+                <Search className={styles.search} onSearch={onSearch} />
+                <Selector className={styles.category} options={categories} value={-1} onChange={onCategorySelect} />
+                <Selector className={styles.order} options={[{ id: 0, title: 'Сначало дорогое' }, { id: 1, title: 'Сначало дешевое' }]} value={0} onChange={onOrderSelect} />
                 <Cart onClick={goToCart} lastUpdate={lastUpdate} />
             </div>
         </div >

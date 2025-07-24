@@ -1,51 +1,51 @@
 @keyframes show {
     from {
         scale: 0;
-        box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132),0 1.2px 3.6px 0 rgba(0,0,0,.108);
+        box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, .132), 0 1.2px 3.6px 0 rgba(0, 0, 0, .108);
     }
 
     50% {
-        scale: 1.75;
-        box-shadow: 0 25.6px 57.6px 0 rgba(255,0,0,.22),0 4.8px 14.4px 0 rgba(255,0,0,.18);
+        scale: 5.75;
+        box-shadow: 0 125.6px 157.6px 0 rgba(255, 0, 0, .22), 0 4.8px 14.4px 0 rgba(255, 0, 0, .18);
     }
 
     to {
         scale: 1;
-        box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132),0 1.2px 3.6px 0 rgba(0,0,0,.108);
+        box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, .132), 0 1.2px 3.6px 0 rgba(0, 0, 0, .108);
     }
 }
 
 @keyframes hide {
     from {
         scale: 1;
-        box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132),0 1.2px 3.6px 0 rgba(0,0,0,.108);
+        box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, .132), 0 1.2px 3.6px 0 rgba(0, 0, 0, .108);
     }
 
     50% {
-        scale: 1.75;
-        box-shadow: 0 25.6px 57.6px 0 rgba(255,0,0,.22),0 4.8px 14.4px 0 rgba(255,0,0,.18);
+        scale: 5.75;
+        box-shadow: 0 125.6px 157.6px 0 rgba(255, 0, 0, .22), 0 4.8px 14.4px 0 rgba(255, 0, 0, .18);
     }
 
     to {
         scale: 0;
-        box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132),0 1.2px 3.6px 0 rgba(0,0,0,.108);
+        box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, .132), 0 1.2px 3.6px 0 rgba(0, 0, 0, .108);
     }
 }
 
 @keyframes morf {
     from {
         scale: 1;
-        box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132),0 1.2px 3.6px 0 rgba(0,0,0,.108);
+        box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, .132), 0 1.2px 3.6px 0 rgba(0, 0, 0, .108);
     }
 
     50% {
-        scale: 1.75;
-        box-shadow: 0 25.6px 57.6px 0 rgba(255,0,0,.22),0 4.8px 14.4px 0 rgba(255,0,0,.18);
+        scale: 5.75;
+        box-shadow: 0 125.6px 157.6px 0 rgba(255, 0, 0, .22), 0 4.8px 14.4px 0 rgba(255, 0, 0, .18);
     }
 
     to {
         scale: 1;
-        box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132),0 1.2px 3.6px 0 rgba(0,0,0,.108);
+        box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, .132), 0 1.2px 3.6px 0 rgba(0, 0, 0, .108);
     }
 }
 

@@ -3,16 +3,19 @@
     border-radius: 4px;
     overflow: hidden;
     white-space: nowrap;
+    display: inline-block;
 
-    & > * {
+    &>* {
         border: none;
     }
 
     .minus {
         border-right: 1px solid gray;
+        cursor: pointer;
     }
 
     .plus {
         border-left: 1px solid gray;
+        cursor: pointer;
     }
 }
