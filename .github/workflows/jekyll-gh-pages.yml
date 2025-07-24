@@ -34,7 +34,7 @@ jobs:
       - run: npm run build
       - run: cd ./server
       - run: npm install
-      - run: node server.js
+      - run: node ./server/server.js
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
