@@ -34,9 +34,12 @@
         line-height: 10px;
         border-top: 1px solid gray;
         padding: 5px 0;
+        height: 35px;
 
         .buy {
             flex: 1;
+            height: 40px;
+            font-size: 18pt;
         }
     }
 
